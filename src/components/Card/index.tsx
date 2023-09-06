@@ -6,18 +6,26 @@ import { Feather } from '@expo/vector-icons';
 import { styles } from './styles';
 import { COLORS } from '../../utils/colors';
 
-export function Card() {
-  const [checked, setChecked] = useState<boolean>(false);
+export type ItemProps = {
+  id: string;
+  done: boolean;
+  description: string;
+};
+type Props = {
+  item: ItemProps;
+  onClick: () => void;
+};
+export function Card({ item, onClick }: Props) {
   return (
     <View style={styles.container}>
       <Checkbox
-        value={checked}
-        onValueChange={setChecked}
+        value={item.done}
+        onValueChange={onClick}
         style={styles.checkbox}
-        color={checked ? COLORS.purpleDark : COLORS.blue}
+        color={item.done ? COLORS.purpleDark : COLORS.blue}
       />
-      <Text style={styles.text}>
-        Teste teste teste teste teste teste teste teste teste teste
+      <Text style={item.done ? styles.textDone : styles.text}>
+        {item.description}
       </Text>
       <TouchableOpacity activeOpacity={0.8}>
         <Feather style={styles.icon} name='trash-2' size={24} color='black' />

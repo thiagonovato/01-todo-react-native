@@ -22,6 +22,13 @@ export const styles = StyleSheet.create({
     color: COLORS.gray100,
     fontSize: 14
   },
+  textDone: {
+    flex: 1,
+    paddingHorizontal: 8,
+    color: COLORS.gray300,
+    fontSize: 14,
+    textDecorationLine: 'line-through'
+  },
   icon: {
     color: COLORS.gray300
   }
