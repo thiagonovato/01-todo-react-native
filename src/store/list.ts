@@ -6,10 +6,12 @@ import { ItemProps } from '../components/Card';
 
 interface TodoState {
   list: ItemProps[];
+  screen: string
   addTodo: (description: string) => void;
   removeTodo: (id: string) => void;
   // updateItem: (id: string, done: boolean) => void;
   checkTodo: (id: string) => void
+  setScreen: (name: string) => void
   // clearList: () => void;
 }
 
@@ -17,6 +19,7 @@ export const useListStore = create<TodoState>()(
   persist(
     (set) => ({
       list: [],
+      screen: "created",
       addTodo: async (description: string) => {
         const digest = await Crypto.randomUUID()
         set((state) => ({
@@ -41,7 +44,12 @@ export const useListStore = create<TodoState>()(
             item.id === id ? { ...item, done: !item.done } : item
           ),
         }));
-      }
+      },
+      setScreen: (name: string) => {
+        set(() => ({
+          screen: name
+        }))
+      },
     }),
     {
       name: 'list-storage',

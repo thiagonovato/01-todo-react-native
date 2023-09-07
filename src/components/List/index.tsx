@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, FlatList, View } from 'react-native';
 
 import { styles } from './styles';
-import { Card } from '../Card';
+import { Card, ItemProps } from '../Card';
 import useListStore from '../../store/list';
 
 export function List() {
-  const { list, removeTodo, checkTodo } = useListStore((state) => state);
+  const { list, removeTodo, checkTodo, screen } = useListStore(
+    (state) => state
+  );
 
   function handleCheck(item) {
     checkTodo(item.id);
@@ -28,7 +30,9 @@ export function List() {
   return (
     <View style={styles.container}>
       <FlatList
-        data={list}
+        data={list.filter(
+          (item) => item.done === (screen === 'done' ? true : false)
+        )}
         keyExtractor={(item: any) => item.id}
         renderItem={({ item }) => (
           <Card
