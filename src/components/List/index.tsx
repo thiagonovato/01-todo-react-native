@@ -1,29 +1,41 @@
 import React from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { Alert, FlatList, View } from 'react-native';
 
 import { styles } from './styles';
-import { Card, ItemProps } from '../Card';
+import { Card } from '../Card';
+import useListStore from '../../store/list';
 
 export function List() {
-  const data = [
-    {
-      id: '1',
-      done: false,
-      description: 'Description 1',
-    },
-  ];
+  const { list, removeTodo, checkTodo } = useListStore((state) => state);
 
-  function handleCheck(test) {
-    console.log('Check', test);
+  function handleCheck(item) {
+    checkTodo(item.id);
+  }
+
+  function handleRemove(item) {
+    Alert.alert('Remove', `Confirm remove ${item.description}?`, [
+      {
+        text: ' Yes',
+        onPress: () => removeTodo(item.id),
+        style: 'cancel',
+      },
+      {
+        text: ' No',
+      },
+    ]);
   }
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={data}
-        keyExtractor={(item: any) => item}
+        data={list}
+        keyExtractor={(item: any) => item.id}
         renderItem={({ item }) => (
-          <Card item={item} onClick={() => handleCheck(item)} />
+          <Card
+            item={item}
+            onClick={() => handleCheck(item)}
+            onRemove={() => handleRemove(item)}
+          />
         )}
       />
     </View>
