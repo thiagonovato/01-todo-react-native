@@ -21,3 +21,13 @@ jobs:
 
       - name: Install dependences
         run: npm install
+
+  CD:
+    name: Continuous Delivery
+    runs-on: ubuntu-latest
+
+    needs: CI
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
