@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Image, Text, View } from 'react-native';
 
 import { styles } from './styles';
 import Logo from '../../assets/logo-home.png';
 import { Input } from '../../components/Input';
 import { ButtonGeneric } from '../../components/ButtonGeneric';
+import AuthContext from '../../contexts/AuthContext';
 
 export function SignIn() {
+  const { signIn } = useContext(AuthContext);
+
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [hidePass, setHidePass] = useState<boolean>(true);
 
   async function handleSignIn() {
-    console.log('Logando...');
+    signIn();
   }
 
   return (

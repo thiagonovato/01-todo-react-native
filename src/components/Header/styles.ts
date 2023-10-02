@@ -7,6 +7,12 @@ export const styles = StyleSheet.create({
     padding: 24,
     height: 173,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    flexDirection: "row"
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 })
