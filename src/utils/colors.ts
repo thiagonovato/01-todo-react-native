@@ -13,6 +13,8 @@ export const COLORS = {
   gray200: "#D9D9D9",
   gray100: "#F2F2F2",
 
+  white: "#FFF",
+
   danger: "#E25858",
 
 }

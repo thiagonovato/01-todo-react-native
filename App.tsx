@@ -1,5 +1,5 @@
 import { StatusBar } from 'react-native';
-import { Home } from './src/screens/Home';
+import { Routes } from './src/routes/routes';
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
         backgroundColor={'transparent'}
         translucent
       />
-      <Home />
+      <Routes />
     </>
   );
 }

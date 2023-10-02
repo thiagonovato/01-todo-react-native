@@ -4,7 +4,6 @@ import { Image, View } from 'react-native';
 import { styles } from './styles';
 
 import Logo from '../../assets/logo-home.png';
-import { Form } from '../Form';
 export function Header() {
   return (
     <View style={styles.container}>
