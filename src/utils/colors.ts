@@ -15,4 +15,6 @@ export const COLORS = {
 
   danger: "#E25858",
 
+  white: "#FFF"
+
 }
