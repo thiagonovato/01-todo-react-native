@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 24,
     width: "100%",
-    marginBottom: 10
+    marginBottom: 20
   },
   inputArea: {
     flexDirection: "row",

@@ -8,7 +8,7 @@ import Logo from '../../assets/logo-home.png';
 import { COLORS } from '../../utils/colors';
 import AuthContext from '../../contexts/AuthContext';
 export function Header() {
-  const { signOut } = useContext(AuthContext);
+  const { signOutService } = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
@@ -20,7 +20,7 @@ export function Header() {
           name='logout'
           size={24}
           color={COLORS.gray300}
-          onPress={signOut}
+          onPress={signOutService}
         />
       </TouchableOpacity>
     </View>

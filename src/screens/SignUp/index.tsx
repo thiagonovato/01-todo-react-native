@@ -8,26 +8,23 @@ import { ButtonGeneric } from '../../components/ButtonGeneric';
 import AuthContext from '../../contexts/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 
-export function SignIn() {
+export function SignUp() {
   const navigation = useNavigation();
-  const { signIn, loadingAuth } = useContext(AuthContext);
+  const { signUp, loadingAuth } = useContext(AuthContext);
 
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [hidePass, setHidePass] = useState<boolean>(true);
 
-  async function handleSignIn() {
+  async function handleSignUp() {
     if (!email || !password) return;
-    await signIn(email, password);
+    await signUp(email, password);
     setEmail('');
     setPassword('');
   }
 
-  function handleCreateAccount() {
-    navigation.navigate('signUp' as never);
-  }
-  function handleForgotPassword() {
-    navigation.navigate('forgotPassword' as never);
+  function handleBack() {
+    navigation.goBack();
   }
 
   return (
@@ -48,24 +45,17 @@ export function SignIn() {
         setHidePass={() => setHidePass(!hidePass)}
       />
       <ButtonGeneric
-        title='Enter'
-        onPress={() => handleSignIn()}
+        title='Create a new account'
+        onPress={() => handleSignUp()}
         loading={loadingAuth}
       />
       <View style={styles.containerLink}>
         <TouchableOpacity
           activeOpacity={0.8}
           style={styles.buttonLink}
-          onPress={handleCreateAccount}
+          onPress={handleBack}
         >
-          <Text style={styles.textLink}>Create a new account</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          style={styles.buttonLink}
-          onPress={handleForgotPassword}
-        >
-          <Text style={styles.textLink}>Forgot password?</Text>
+          <Text style={styles.textLink}>Back</Text>
         </TouchableOpacity>
       </View>
     </View>
